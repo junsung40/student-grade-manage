@@ -13,6 +13,192 @@
 @media(max-width:740px){.app{display:block;padding-bottom:70px}.sidebar{display:none}.main{padding:18px 13px 34px}.topbar{margin-bottom:19px}.top-actions .pill{display:none}.top-actions .btn{padding:7px 9px}.page-head{align-items:flex-start;margin-bottom:16px}.page-title{font-size:25px}.page-desc{font-size:11px}.grid{gap:10px}.grid-4{gap:9px}.stat{padding:13px}.stat-value{font-size:23px}.card-pad{padding:15px}.quick-grid{gap:8px}.quick{padding:10px}.quick small{display:none}.form-grid{gap:9px}.subnav{display:grid;grid-template-columns:repeat(7,1fr);position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);padding:7px 4px calc(7px + env(safe-area-inset-bottom));z-index:15}.subnav button{border:0;background:transparent;color:#85899b;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 0;font-size:9px;font-weight:800}.subnav button span:first-child{font-size:16px}.subnav button.active{color:var(--primary)}.category-row{grid-template-columns:84px 1fr auto}.main .topbar .crumb{font-size:10px}}
 @media(max-width:390px){.subnav button{font-size:8px}.subnav button span:first-child{font-size:14px}.grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}.form-grid{grid-template-columns:1fr}.top-actions{gap:4px}}
 @media print{body{background:white}.sidebar,.subnav,.topbar,.top-actions,.no-print,.btn{display:none!important}.app{display:block}.main{padding:0}.page{display:none!important}#page-courses{display:block!important}#page-courses .grid[style*=\"grid-template-columns\"]{grid-template-columns:1fr!important}#page-courses .grid[style*=\"grid-template-columns\"]>.card:first-child{display:none!important}#page-courses .grid[style*=\"grid-template-columns\"]>.card:last-child{grid-column:1/-1}.card{box-shadow:none;border:1px solid #ddd}.table-scroll{overflow:visible}table{min-width:0}th,td{font-size:9px;padding:7px}.footer-note{display:none}}
+/* MY CAMPUS visual refresh: clean dashboard + campus portal + premium analytics */
+:root {
+  --primary: #5865d9;
+  --primary2: #3f4ec4;
+  --soft: #eef0ff;
+  --shadow: 0 15px 38px rgba(29, 42, 88, .075);
+  --r: 19px;
+}
+body {
+  background:
+    radial-gradient(circle at 92% 2%, rgba(112, 132, 240, .10), transparent 24rem),
+    radial-gradient(circle at 5% 45%, rgba(89, 174, 218, .07), transparent 22rem),
+    var(--bg);
+}
+.sidebar {
+  background: linear-gradient(178deg, #111a31 0%, #182541 55%, #202b4b 100%);
+  border-right: 1px solid #283655;
+  box-shadow: 8px 0 28px rgba(23, 35, 67, .07);
+  color: #f4f6ff;
+}
+.brand { padding-bottom: 30px; }
+.brand-mark {
+  background: linear-gradient(145deg, #8a92ff, #5264dd 68%, #3a4dbb);
+  box-shadow: 0 9px 22px rgba(83, 101, 221, .34);
+}
+.brand-name { color: #fff; letter-spacing: .8px; }
+.brand-sub { color: #9ca9c7; }
+.nav-label { color: #7483a5; }
+.nav button { color: #aeb9d1; }
+.nav button:hover { background: rgba(255,255,255,.07); color: #fff; }
+.nav button.active {
+  color: #fff;
+  background: linear-gradient(100deg, rgba(105,119,238,.33), rgba(111,126,238,.13));
+  box-shadow: inset 3px 0 0 #8e99ff;
+}
+.nav-icon { color: #aeb9dc; }
+.nav button.active .nav-icon { color: #bfc6ff; }
+.sidebar-foot { color: #8190b1; border-top: 1px solid rgba(255,255,255,.09); }
+.main { padding-top: 32px; }
+.topbar { margin-bottom: 23px; }
+.crumb { letter-spacing: .5px; }
+.pill { background: #e9edff; color: #4e5bc8; }
+.page#page-dashboard .page-head {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 25px 27px;
+  border: 1px solid #e1e6ff;
+  border-radius: 22px;
+  background: linear-gradient(112deg, #eef0ff 0%, #f8f9ff 54%, #eaf5ff 100%);
+  box-shadow: 0 12px 28px rgba(72, 91, 190, .07);
+}
+.page#page-dashboard .page-head::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 230px;
+  height: 230px;
+  right: 9%;
+  top: -145px;
+  border: 35px solid rgba(104, 119, 222, .09);
+  border-radius: 50%;
+  box-shadow: 0 0 0 30px rgba(104,119,222,.035), 0 0 0 70px rgba(104,119,222,.025);
+  pointer-events: none;
+}
+.page#page-dashboard .page-title { color: #20294a; }
+.page#page-dashboard .page-desc { color: #697493; }
+.page#page-dashboard .page-head .btn-primary { box-shadow: 0 9px 20px rgba(75, 91, 202, .25); }
+.card { transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease; }
+.card:hover { box-shadow: 0 18px 42px rgba(29, 42, 88, .09); border-color: #dfe3f6; }
+.stat { position: relative; overflow: hidden; }
+.stat::before {
+  content: ""; position: absolute; top: 0; left: 18px; right: 18px; height: 3px;
+  border-radius: 0 0 6px 6px; background: linear-gradient(90deg, #6475e5, #91a5ff);
+}
+.stat:nth-child(2)::before { background: linear-gradient(90deg, #35a985, #85d6b5); }
+.stat:nth-child(3)::before { background: linear-gradient(90deg, #d09342, #f0c478); }
+.stat:nth-child(4)::before { background: linear-gradient(90deg, #8461d2, #bd9bef); }
+.stat-value { letter-spacing: -1px; }
+.section-title, .panel-title, .analytics-heading { letter-spacing: -.4px; }
+.btn { border-radius: 11px; }
+.btn-primary { background: linear-gradient(115deg, #6574e5, #4d5acb); border-color: #5866d7; }
+.btn-primary:hover { background: linear-gradient(115deg, #5869dc, #414fbd); }
+.field { border-radius: 10px; }
+th { background: #f7f8fd; }
+tbody tr:hover { background: #f8f9ff; }
+.bar-track { background: #eceefa; }
+.bar-track span { background: linear-gradient(90deg, #8a95f4, #5364d5); }
+.chart-bar { background: linear-gradient(180deg, #9ba7ff, #5969d9); box-shadow: 0 5px 12px rgba(82, 99, 213, .18); }
+.result-box { background: linear-gradient(135deg, #f7f7ff, #f0f5ff); }
+.subnav {
+  background: rgba(255,255,255,.94);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 -7px 24px rgba(31, 43, 79, .06);
+}
+#themeToggle { min-width: 92px; }
+
+/* Optional dark theme */
+body.theme-dark {
+  --bg: #101626;
+  --surface: #192237;
+  --surface2: #202b43;
+  --ink: #edf1ff;
+  --muted: #a2aec8;
+  --line: #303c57;
+  --primary: #9ba5ff;
+  --primary2: #7e8af5;
+  --soft: #2b3458;
+  --green: #57c7a0;
+  --greenbg: #183f39;
+  --orange: #efbd70;
+  --orangebg: #453820;
+  --red: #f18d9b;
+  --redbg: #452b39;
+  --shadow: 0 16px 40px rgba(0,0,0,.22);
+  background:
+    radial-gradient(circle at 90% 0%, rgba(100, 113, 225, .12), transparent 25rem),
+    #101626;
+  color: var(--ink);
+}
+body.theme-dark .sidebar {
+  background: linear-gradient(178deg, #0b1120 0%, #111a2e 58%, #17213b 100%);
+  border-color: #26324a;
+}
+body.theme-dark .main { color: var(--ink); }
+body.theme-dark .card,
+body.theme-dark .mini-box,
+body.theme-dark .quick,
+body.theme-dark .tab,
+body.theme-dark .btn:not(.btn-primary):not(.btn-danger) {
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--ink);
+}
+body.theme-dark .card:hover { border-color: #495779; }
+body.theme-dark .page#page-dashboard .page-head {
+  background: linear-gradient(112deg, #222d50, #202b43 55%, #1b344b);
+  border-color: #35436a;
+}
+body.theme-dark .page#page-dashboard .page-title { color: #f1f3ff; }
+body.theme-dark .page#page-dashboard .page-desc { color: #b2bdd7; }
+body.theme-dark .pill { background: #2c355b; color: #c2c9ff; }
+body.theme-dark .btn-primary { background: linear-gradient(115deg, #7180f0, #5868d8); border-color: #7180f0; color: #fff; }
+body.theme-dark .btn-danger { background: #452b39; border-color: #62404f; color: #ffabb5; }
+body.theme-dark .field {
+  background: #121b2d;
+  border-color: #35415c;
+  color: #edf1ff;
+}
+body.theme-dark .field::placeholder { color: #7f8ba7; }
+body.theme-dark .field:focus { background: #172238; border-color: #8792f1; }
+body.theme-dark .form-item label,
+body.theme-dark .form-item label,
+body.theme-dark label { color: #b9c3da; }
+body.theme-dark th { background: #202b43; color: #aab5cf; }
+body.theme-dark td { border-color: #2c3850; color: #c1cbe0; }
+body.theme-dark tbody tr:hover { background: #202b43; }
+body.theme-dark .grade-badge { background: #30395e; color: #c2caff; }
+body.theme-dark .grade-A\+, body.theme-dark .grade-A0, body.theme-dark .grade-P { background: #183f39; color: #70dab4; }
+body.theme-dark .grade-B\+, body.theme-dark .grade-B0 { background: #26395d; color: #a8bdff; }
+body.theme-dark .grade-C\+, body.theme-dark .grade-C0 { background: #453820; color: #f4cb86; }
+body.theme-dark .grade-D\+, body.theme-dark .grade-D0 { background: #493326; color: #f5b37a; }
+body.theme-dark .grade-F, body.theme-dark .grade-NP { background: #452b39; color: #ffabb5; }
+body.theme-dark .bar-track, body.theme-dark .progress { background: #2a3550; }
+body.theme-dark .result-box,
+body.theme-dark .leader-box,
+body.theme-dark .notice:not(.warning):not(.success):not(.error) {
+  background: #222d49;
+  border-color: #354263;
+  color: #cbd3ed;
+}
+body.theme-dark .tab.active { background: #323c67; border-color: #4a568c; color: #d5d9ff; }
+body.theme-dark .subnav { background: rgba(18, 27, 45, .96); border-color: #303c57; }
+body.theme-dark .subnav button { color: #a7b1ca; }
+body.theme-dark .subnav button.active { color: #b9c1ff; }
+body.theme-dark .stat-foot,
+body.theme-dark .footer-note,
+body.theme-dark .form-help,
+body.theme-dark .analytics-note { color: #909db9; }
+body.theme-dark .chart-wrap { border-color: #35415a; }
+body.theme-dark .empty { color: #94a1bd; }
+body.theme-dark select option { background: #192237; color: #edf1ff; }
+body.theme-dark .progress>span { background: linear-gradient(90deg,#8996ff,#6574e5); }
+body.theme-dark .progress.green>span { background: linear-gradient(90deg,#54c9a1,#249875); }
+body.theme-dark .progress.orange>span { background: linear-gradient(90deg,#eac17b,#bd802b); }
+
 </style>
 </head>
 <body>
@@ -32,7 +218,7 @@
     <div class="sidebar-foot">MY CAMPUS<br>나만의 대학 생활 성적 관리 도구<br>데이터는 현재 브라우저에 저장됩니다.</div>
   </aside>
   <main class="main">
-    <header class="topbar"><div class="crumb" id="breadcrumb">MY CAMPUS / HOME</div><div class="top-actions"><span class="pill">PERSONAL GPA MANAGER</span><button class="btn" id="backupQuick">백업 저장</button></div></header>
+    <header class="topbar"><div class="crumb" id="breadcrumb">MY CAMPUS / HOME</div><div class="top-actions"><span class="pill">PERSONAL GPA MANAGER</span><button class="btn" id="backupQuick">백업 저장</button><button class="btn" id="themeToggle" type="button" aria-pressed="false" title="화면 테마 변경">☾ 다크 모드</button></div></header>
 
     <section class="page active" id="page-dashboard">
       <div class="page-head"><div><div class="eyebrow">YOUR ACADEMIC OVERVIEW</div><h1 class="page-title">나의 학업 대시보드</h1><p class="page-desc">성적부터 졸업까지, 대학 생활의 현재 위치를 한눈에 확인하세요.</p></div><button class="btn btn-primary" data-go="courses">＋ 과목 등록</button></div>
@@ -300,6 +486,20 @@ $('exportCsv').addEventListener('click',()=>{const rows=[['연도','학기','과
 $('printTranscript').addEventListener('click',()=>window.print());
 function renderAll(){renderDashboard();renderCourses();renderGraduation();renderAnalysis();renderPlanner();runGoal();runSim();runExam();runScholar()}
 function init(){fillGradeSelect('courseGrade',true);fillGradeSelect('simGrade',false);fillGradeSelect('retakeTarget',false);fillGradeSelect('planGrade',false);$('courseYear').value=new Date().getFullYear();$('planYear').value=new Date().getFullYear();$('courseTerm').value=currentTerm().term;$('planTerm').value=currentTerm().term;$('courseGrade').value='A0';$('simGrade').value='A0';$('retakeTarget').value='A+';$('planGrade').value='A0';renderSettings();renderAll()}
+function applyTheme(theme){
+  const dark = theme === 'dark';
+  document.body.classList.toggle('theme-dark', dark);
+  const button = $('themeToggle');
+  if(button){ button.textContent = dark ? '☀ 라이트 모드' : '☾ 다크 모드'; button.setAttribute('aria-pressed', String(dark)); }
+  try { localStorage.setItem('myCampusTheme_v1', dark ? 'dark' : 'light'); } catch(error) {}
+}
+$('themeToggle').addEventListener('click',()=>{
+  const dark = !document.body.classList.contains('theme-dark');
+  applyTheme(dark ? 'dark' : 'light');
+});
+let savedTheme = 'light';
+try { savedTheme = localStorage.getItem('myCampusTheme_v1') || 'light'; } catch(error) {}
+applyTheme(savedTheme);
 init();
 </script>
 </body>
